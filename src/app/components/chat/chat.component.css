@@ -12,13 +12,13 @@
     flex-direction: column;
     width: 100%;
     height: 80vh;
-    overflow: auto;
 }
 #divLabelChat{
     height: 80%;
     border: 1px solid rgb(214, 209, 209);
     border-radius: 2px;
     margin: 3px;
+    overflow: auto;
 }
 
 #inputUser{

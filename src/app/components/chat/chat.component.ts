@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { environment } from 'src/environments/environment';
 import { DatePipe } from '@angular/common';
+import { ChatServiceService } from 'src/app/services/chat-service.service';
 
 
 @Component({
@@ -21,15 +22,21 @@ export class ChatComponent implements OnInit {
   messagesList  = [];
   constructor(private http: HttpClient,
     private datePipe: DatePipe,
+    private chatService: ChatServiceService
     ) { }
 
   ngOnInit() {
     this.getMessages();
+    this.chatService.listen('recibirMensaje').subscribe((resp) => {
+      this.addMessage(resp);
+    });
+
   }
 
   async getMessages(){
     try{
         const messages = await this.http.get(this.url + 'getAll').toPromise();
+        
         console.log(messages);
         this.messagesList = Object.entries(messages).map(item => {
           return {
@@ -52,14 +59,30 @@ export class ChatComponent implements OnInit {
       try{
           
           const resp = await this.http.post(this.url + 'create', body).toPromise();
-          this.messagesList.push({
-            message: this.message,
-            user: this.user,
+          console.log(resp);
+          this.chatService.emit('enviarMensaje', {
+            message: resp['message'],
+            user: resp['user'],
             date: this.datePipe.transform(resp['date'], 'yyyy-MM-dd')
-          })
+            
+          });
+          const respMap = {
+            message: resp['message'],
+            user: resp['user'],
+            date: this.datePipe.transform(resp['date'], 'yyyy-MM-dd')
+          }
+          this.addMessage(respMap);
       }catch(err){
 
       }
     }
+  }
+
+  addMessage(resp){
+    this.messagesList.push({
+      message: resp.message,
+      user: resp.user,
+      date: resp.date
+    })
   }
 }
