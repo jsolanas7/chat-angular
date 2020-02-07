@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "postinstall": "ng build --prod",
+    "preinstall": "npm i -g @angular/cli",
+    "heroku-postbuild": "npm run build:prod",
     "e2e": "ng e2e"
   },
   "private": true,
