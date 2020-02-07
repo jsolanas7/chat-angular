@@ -42,7 +42,7 @@ export class ChatComponent implements OnInit {
           return {
             user: item[1]['user'],
             message: item[1]['message'],
-            date: this.datePipe.transform(item[1]['date'], 'yyyy-MM-dd')
+            date: this.datePipe.transform(item[1]['date'], 'yyyy-MM-dd hh:mm:ss')
 
           }
         });
@@ -63,13 +63,13 @@ export class ChatComponent implements OnInit {
           this.chatService.emit('enviarMensaje', {
             message: resp['message'],
             user: resp['user'],
-            date: this.datePipe.transform(resp['date'], 'yyyy-MM-dd')
+            date: this.datePipe.transform(resp['date'], 'yyyy-MM-dd hh:mm:ss')
             
           });
           const respMap = {
             message: resp['message'],
             user: resp['user'],
-            date: this.datePipe.transform(resp['date'], 'yyyy-MM-dd')
+            date: this.datePipe.transform(resp['date'], 'yyyy-MM-dd hh:mm:ss')
           }
           this.addMessage(respMap);
       }catch(err){
