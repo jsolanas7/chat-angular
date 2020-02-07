@@ -1,0 +1,17 @@
+<div class="card" id="container">
+    <div class="card-header" id="containerUser">
+        <label>Usuario</label>
+        <input [(ngModel)]="user" name="user" id="inputUser" class="form-control" type="text" />
+    </div>
+    <div class="card-body" id="containerChat">
+        <div id="divLabelChat">
+            <ng-container *ngFor="let message of messagesList">
+                {{message.date}} | <strong>{{message.user}} : </strong> {{message.message}} <br/>
+            </ng-container>
+        </div>
+        <div id="containerInputChat">
+            <input [(ngModel)]="message" name="message" class="form-control" id="inputChat" type="text">
+            <button class="btn-primary" id="sendButton" (click)="sendMessage()">Enviar</button>
+        </div>
+    </div>
+</div>
