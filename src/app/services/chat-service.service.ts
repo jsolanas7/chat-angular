@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import * as io from 'socket.io-client';
 import { Observable, Subscriber } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
     providedIn: 'root'
 })
 export class ChatServiceService {
 
-    private url = 'http://localhost:3000';
+    private url = environment.url;
     private socket;
 
     constructor() {
