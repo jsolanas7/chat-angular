@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   // url: 'http://localhost:3000/chat/'
-  url: 'https://chat-arjonero.herokuapp.com/'
+  url: 'https://chat-arjonero.herokuapp.com/chat/'
 };
 
 /*
