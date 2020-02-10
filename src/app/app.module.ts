@@ -6,6 +6,10 @@ import { AppComponent } from './app.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { environment } from 'src/environments/environment';
+
+const config: SocketIoConfig = { url: environment.urlSocket, options: {} };
 
 @NgModule({
   declarations: [
@@ -16,7 +20,8 @@ import { DatePipe } from '@angular/common';
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule ,
+    SocketIoModule.forRoot(config)
 
   ],
   providers: [HttpClient, DatePipe],

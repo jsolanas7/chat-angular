@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import * as io from 'socket.io-client';
 import { Observable, Subscriber } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Socket } from 'ngx-socket-io';
 
 @Injectable({
     providedIn: 'root'
@@ -9,10 +10,10 @@ import { environment } from 'src/environments/environment';
 export class ChatServiceService {
 
     private url = environment.url;
-    private socket;
+    // private socket;
 
-    constructor() {
-        this.socket = io(this.url);
+    constructor(private socket: Socket) {
+        // this.socket = io.connect(this.url);
     }
 
     listen(eventName: string) {

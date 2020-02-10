@@ -66,12 +66,12 @@ export class ChatComponent implements OnInit {
             date: this.datePipe.transform(resp['date'], 'yyyy-MM-dd hh:mm:ss')
             
           });
-          const respMap = {
-            message: resp['message'],
-            user: resp['user'],
-            date: this.datePipe.transform(resp['date'], 'yyyy-MM-dd hh:mm:ss')
-          }
-          this.addMessage(respMap);
+          // const respMap = {
+          //   message: resp['message'],
+          //   user: resp['user'],
+          //   date: this.datePipe.transform(resp['date'], 'yyyy-MM-dd hh:mm:ss')
+          // }
+          // this.addMessage(respMap);
       }catch(err){
 
       }

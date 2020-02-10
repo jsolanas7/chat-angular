@@ -4,8 +4,9 @@
 
 export const environment = {
   production: false,
-  // url: 'http://localhost:3000/chat/'
-  url: 'https://chat-arjonero.herokuapp.com/chat/'
+  url: 'http://localhost:3000/chat/',
+  urlSocket: 'http://localhost:3000',
+  // url: 'https://chat-arjonero.herokuapp.com/chat/'
 };
 
 /*
